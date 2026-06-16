@@ -7,6 +7,7 @@ export type ColorTheme = {
   text: string;
   textSecondary: string;
   background: string;
+  backgroundImage: string;
   card: string;
   border: string;
   tint: string;
@@ -15,6 +16,7 @@ export type ColorTheme = {
   positive: string;
   negative: string;
   warning: string;
+  white: string;
 }
 
 // Diz ao TypeScript que o objeto exportado tem exatamente light e dark,
@@ -24,6 +26,7 @@ const colorPalette: { light: ColorTheme; dark: ColorTheme } = {
     text: '#1A1A2E',
     textSecondary: '#6B7280',
     background: '#F4F6F9',
+    backgroundImage: '#0F172A',
     card: '#FFFFFF',
     border: '#E5E7EB',
     tint: primary,
@@ -32,11 +35,13 @@ const colorPalette: { light: ColorTheme; dark: ColorTheme } = {
     positive: '#00C896', // rentabilidade positiva
     negative: '#EF4444', // rentabilidade negativa
     warning: '#F59E0B',
+    white: '#FFFFFF'
   },
   dark: {
     text: '#F9FAFB',
     textSecondary: '#9CA3AF',
     background: '#0F172A',
+    backgroundImage: '#F4F6F9',
     card: '#1E293B',
     border: '#334155',
     tint: primaryDark,
@@ -45,6 +50,7 @@ const colorPalette: { light: ColorTheme; dark: ColorTheme } = {
     positive: '#00C896',
     negative: '#EF4444',
     warning: '#F59E0B',
+    white: '#FFFFFF'
   },
 };
 

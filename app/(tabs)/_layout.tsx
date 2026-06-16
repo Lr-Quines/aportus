@@ -2,24 +2,19 @@
 // Tabs é o componente que cria a navegação por abas na parte inferior da tela
 import { ImperativeRouter, Tabs } from 'expo-router';
 // colorPalette é a paleta de cores que configuramos no constants/Colors.ts
-import colorPalette, { ColorTheme } from '@/constants/Colors';
+import { ColorTheme } from '@/constants/Colors';
 // Hook que detecta se o usuário está usando tema claro ou escuro
-import { useColorScheme } from '@/components/useColorScheme';
 // Evita erros de renderização quando o app roda no navegador web
 import { TabIcon } from '@/components/TabIcon';
 import { useClientOnlyValue } from '@/components/useClientOnlyValue';
+import { useColorTheme } from '@/hooks/useColorTheme';
 import { useRouter } from 'expo-router';
+import { JSX } from 'react';
 import { Pressable } from 'react-native';
 
 // Componente principal que define o layout das abas
-export default function TabLayout() {
-  // Pega o tema atual: 'light' ou 'dark'
-  // O '?? light' garante um valor padrão caso seja undefined
-  const colorScheme: 'light' | 'dark' = useColorScheme();
-
-  // Atalho para não precisar escrever Colors[colorScheme] toda hora
-  const colorTheme: ColorTheme = colorPalette[colorScheme];
-
+export default function TabLayout(): JSX.Element {
+  const colorTheme: ColorTheme = useColorTheme();
   const router: ImperativeRouter = useRouter();
 
   return (
@@ -65,9 +60,9 @@ export default function TabLayout() {
       {/* Cada Tabs.Screen define uma aba */}
       {/* O 'name' deve ser igual ao nome do arquivo dentro de app/(tabs)/ */}
 
-      {/* Aba 1 — aponta para app/(tabs)/index.tsx */}
+      {/* Aba 1 — aponta para app/(tabs)/visao-geral.tsx */}
       <Tabs.Screen
-        name='index'
+        name='visao-geral'
         options={{
           title: 'Visão geral',
           tabBarIcon: ({ color }) => (
