@@ -1,19 +1,51 @@
-const tintColorLight = '#2f95dc';
-const tintColorDark = '#fff';
+const primary = '#00C896';
+const primaryDark = '#00A87E';
 
-export default {
+// Define o formato que todo tema deve seguir
+// Se adicionar uma cor nova no light, o TypeScript vai exigir no dark também
+export type ColorTheme = {
+  text: string;
+  textSecondary: string;
+  background: string;
+  card: string;
+  border: string;
+  tint: string;
+  tabIconDefault: string;
+  tabIconSelected: string;
+  positive: string;
+  negative: string;
+  warning: string;
+}
+
+// Diz ao TypeScript que o objeto exportado tem exatamente light e dark,
+// e que ambos seguem o formato ColorTheme
+const colorPalette: { light: ColorTheme; dark: ColorTheme } = {
   light: {
-    text: '#000',
-    background: '#fff',
-    tint: tintColorLight,
-    tabIconDefault: '#ccc',
-    tabIconSelected: tintColorLight,
+    text: '#1A1A2E',
+    textSecondary: '#6B7280',
+    background: '#F4F6F9',
+    card: '#FFFFFF',
+    border: '#E5E7EB',
+    tint: primary,
+    tabIconDefault: '#9CA3AF',
+    tabIconSelected: primary,
+    positive: '#00C896', // rentabilidade positiva
+    negative: '#EF4444', // rentabilidade negativa
+    warning: '#F59E0B',
   },
   dark: {
-    text: '#fff',
-    background: '#000',
-    tint: tintColorDark,
-    tabIconDefault: '#ccc',
-    tabIconSelected: tintColorDark,
+    text: '#F9FAFB',
+    textSecondary: '#9CA3AF',
+    background: '#0F172A',
+    card: '#1E293B',
+    border: '#334155',
+    tint: primaryDark,
+    tabIconDefault: '#475569',
+    tabIconSelected: primaryDark,
+    positive: '#00C896',
+    negative: '#EF4444',
+    warning: '#F59E0B',
   },
 };
+
+export default colorPalette;
