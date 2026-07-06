@@ -1,0 +1,42 @@
+<!-- sidebar recolhido — sempre visível -->
+<aside class="sidebar">
+  <nav class="sidebar-nav">
+    @for (item of items; track item.route) {
+      <a
+        class="sidebar-item"
+        [routerLink]="item.route"
+        routerLinkActive="active">
+        <ng-container *ngComponentOutlet="item.icon" />
+      </a>
+    }
+  </nav>
+</aside>
+
+<aportus-offcanvas [(isSidebarExpanded)]="isSidebarExpanded" size="lg" position="right">
+  <div class="sidebar-expanded-panel flex flex-col h-full">
+
+    <div class="sidebar-expanded-header flex items-center p-4 border-b">
+      <button class="hamburger p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800" (click)="isSidebarExpanded.set(false)">
+        <svg lucideX></svg>
+      </button>
+
+      <div class="logo-wrapper flex items-center gap-2">
+        <img src="aportus-icon.png" alt="Aportus" class="logo w-8 h-8" />
+        <span class="logo-text font-bold text-lg">Aportus</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-expanded-nav flex-1 p-4 flex flex-col gap-2">
+      @for (item of items; track item.route) {
+        <a
+          class="sidebar-item-expanded flex items-center gap-3 p-3 rounded-lg transition-colors"
+          [routerLink]="item.route"
+          routerLinkActive="active"
+          (click)="isSidebarExpanded.set(false)"> <ng-container *ngComponentOutlet="item.icon" />
+          <span class="sidebar-label">{{ item.label }}</span>
+        </a>
+      }
+    </nav>
+
+  </div>
+</aportus-offcanvas>

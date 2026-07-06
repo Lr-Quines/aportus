@@ -2,6 +2,7 @@
 
 @import 'tailwindcss';
 @import './app/shared/directives/input/input.directive.css';
+@import './app/shared/directives/tooltip/tooltip.directive.css';
 
 :root {
   color-scheme: light;
@@ -14,6 +15,7 @@
   --color-border: #E5E7EB;
   --color-negative: #EF4444;
   --color-warning: #F59E0B;
+  --color-opposite: #0F172A;
   --color-dark: #0F172A;
 }
 
@@ -28,4 +30,5 @@ html.dark {
   --color-border: #334155;
   --color-negative: #F87171;
   --color-warning: #FBBF24;
+  --color-opposite: #F4F6F9;
 }

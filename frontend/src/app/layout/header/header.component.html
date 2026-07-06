@@ -1,0 +1,20 @@
+<header class="header">
+  <div class="header-left">
+    <button class="hamburger" (click)="toggleSidebar.emit()">
+      <svg lucideMenu></svg>
+    </button>
+
+    <div class="logo-wrapper">
+      <img src="aportus-icon.png" alt="Aportus" class="logo" />
+      <span class="logo-text">Aportus</span>
+    </div>
+  </div>
+
+  <div class="header-right">
+    <aportus-theme-toggle />
+
+    <button class="avatar">
+      <svg lucideUser></svg>
+    </button>
+  </div>
+</header>

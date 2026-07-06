@@ -1,0 +1,12 @@
+@if (isSidebarExpanded()) {
+  <div
+    class="fixed inset-0 bg-black/30 z-[998] transition-opacity duration-300"
+    (click)="close()">
+  </div>
+}
+
+<div
+  [class]="'fixed top-0 bottom-0 left-0 border-r bg-[var(--color-card)] border-[var(--color-border)] shadow-2xl z-[999] flex flex-col transition-transform duration-300 ease-in-out ' +
+    (isSidebarExpanded() ? 'translate-x-0' : '-translate-x-full')">
+  <ng-content />
+</div>

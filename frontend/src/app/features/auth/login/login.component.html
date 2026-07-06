@@ -1,43 +1,29 @@
-<div class="login-container">
-  <div class="login-card">
+<aportus-auth-layout subtitle="Controle seus investimentos em um só lugar">
+  <input
+    aportusInput
+    type="email"
+    placeholder="E-mail"
+    [ngModel]="email()"
+    (ngModelChange)="email.set($event)"
+    autocomplete="email"
+    (keyup.enter)="handleLogin()" />
 
-    <div class="logo-container">
-      <img src="aportus-logo.png" alt="Aportus" class="logo" />
-    </div>
+  <input
+    aportusInput
+    type="password"
+    placeholder="Senha"
+    [ngModel]="password()"
+    (ngModelChange)="password.set($event)"
+    autocomplete="current-password"
+    (keyup.enter)="handleLogin()" />
 
-    <p class="subtitle">Controle seus investimentos em um só lugar</p>
+  <button
+    class="login-button"
+    [class.loading]="isLoading()"
+    [disabled]="isLoading()"
+    (click)="handleLogin()">
+    {{ isLoading() ? 'Entrando...' : 'Entrar' }}
+  </button>
 
-    <input
-      aportusInput
-      type="email"
-      placeholder="E-mail"
-      [ngModel]="email()"
-      (ngModelChange)="email.set($event)"
-      autocomplete="email"
-      (keyup.enter)="handleLogin()" />
-
-    <input
-      aportusInput
-      type="password"
-      placeholder="Senha"
-      [ngModel]="password()"
-      (ngModelChange)="password.set($event)"
-      autocomplete="current-password"
-      (keyup.enter)="handleLogin()" />
-
-    <button
-      class="login-button"
-      [class.loading]="isLoading()"
-      [disabled]="isLoading()"
-      (click)="handleLogin()">
-      {{ isLoading() ? 'Entrando...' : 'Entrar' }}
-    </button>
-
-    <p class="link" (click)="navigateToRegister()">Criar conta</p>
-
-<button (click)="themeService.toggleTheme()">
-    Alternar tema
-</button>
-
-  </div>
-</div>
+  <p class="link" (click)="navigateToRegister()">Criar conta</p>
+</aportus-auth-layout>

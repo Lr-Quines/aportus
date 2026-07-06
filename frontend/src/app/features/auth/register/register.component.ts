@@ -2,13 +2,16 @@ import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { NAV_ROUTES } from '../../../core/consts/routes.const';
+import { AuthLayoutComponent } from '../../../layout/auth-layout/auth-layout.component';
 import { InputDirective } from '../../../shared/directives/input/input.directive';
-import { RegisterCredentials } from '../models/auth.model';
+import { AuthResult, RegisterCredentials } from '../models/auth.model';
 import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'aportus-register',
   imports: [
+    AuthLayoutComponent,
     FormsModule,
     InputDirective
   ],
@@ -16,30 +19,30 @@ import { AuthService } from '../services/auth.service';
   styleUrl: './register.component.css',
 })
 export class RegisterComponent {
+
+  // #region Injects
+  private readonly toastrService = inject(ToastrService);
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
-  private readonly toastr = inject(ToastrService);
+  // #endregion Injects
 
+  // #region Signals
   protected readonly name = signal('');
-  protected readonly username = signal('');
   protected readonly email = signal('');
   protected readonly password = signal('');
   protected readonly confirmPassword = signal('');
   protected readonly isLoading = signal(false);
+  // #endregion Signals
 
+  // #region Methods
   protected async handleRegister(): Promise<void> {
     if (!this.name() || !this.email() || !this.password() || !this.confirmPassword()) {
-      this.toastr.warning('Preencha todos os campos');
+      this.toastrService.warning('Preencha todos os campos');
       return;
     }
 
     if (this.password() !== this.confirmPassword()) {
-      this.toastr.error('As senhas não conferem');
-      return;
-    }
-
-    if (this.password().length < 6) {
-      this.toastr.error('A senha deve ter no mínimo 6 caracteres');
+      this.toastrService.error('As senhas não conferem');
       return;
     }
 
@@ -47,25 +50,31 @@ export class RegisterComponent {
 
     const credentials: RegisterCredentials = {
       name: this.name(),
-      username: this.username(),
       email: this.email(),
-      password: this.password(),
+      password: this.password()
     };
 
-    const result = await this.authService.register(credentials);
+    const result: AuthResult = await this.authService.register(credentials);
 
     this.isLoading.set(false);
 
     if (!result.success) {
-      this.toastr.error(result.error ?? 'Erro ao realizar cadastro');
+      this.toastrService.error(result.error ?? 'Erro ao realizar cadastro');
       return;
     }
 
-    this.toastr.success('Conta criada com sucesso!');
-    this.router.navigate(['/auth/login']);
+    this.toastrService.success('Conta criada com sucesso!');
+
+    const authResult: AuthResult = await this.authService.login(credentials);
+
+    authResult.success
+      ? this.router.navigate([NAV_ROUTES.dashboard])
+      : this.router.navigate([NAV_ROUTES.login]);
   }
 
   protected navigateToLogin(): void {
-    this.router.navigate(['/auth/login']);
+    this.router.navigate([NAV_ROUTES.login]);
   }
+  // #endregion Methods
+
 }

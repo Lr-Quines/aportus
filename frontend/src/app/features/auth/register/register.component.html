@@ -1,63 +1,45 @@
-<div class="register-container">
-  <div class="register-card">
+<aportus-auth-layout subtitle="Crie sua conta e comece a investir melhor">
+  <input
+    aportusInput
+    type="text"
+    placeholder="Nome completo"
+    [ngModel]="name()"
+    (ngModelChange)="name.set($event)"
+    autocomplete="name" />
 
-    <div class="logo-container">
-      <img src="aportus-logo.png" alt="Aportus" class="logo" />
-    </div>
+  <input
+    aportusInput
+    type="email"
+    placeholder="E-mail"
+    [ngModel]="email()"
+    (ngModelChange)="email.set($event)"
+    autocomplete="email" />
 
-    <p class="subtitle">Crie sua conta e comece a investir melhor</p>
+  <input
+    aportusInput
+    type="password"
+    placeholder="Senha"
+    [ngModel]="password()"
+    (ngModelChange)="password.set($event)"
+    autocomplete="new-password" />
 
-    <input
-      aportusInput
-      type="text"
-      placeholder="Nome completo"
-      [ngModel]="name()"
-      (ngModelChange)="name.set($event)"
-      autocomplete="name" />
+  <input
+    aportusInput
+    type="password"
+    placeholder="Confirmar senha"
+    [ngModel]="confirmPassword()"
+    (ngModelChange)="confirmPassword.set($event)"
+    autocomplete="new-password" />
 
-    <input
-      aportusInput
-      type="text"
-      placeholder="Nome de usuário"
-      [ngModel]="username()"
-      (ngModelChange)="username.set($event)"
-      autocomplete="username" />
+  <button
+    class="register-button"
+    [class.loading]="isLoading()"
+    [disabled]="isLoading()"
+    (click)="handleRegister()">
+    {{ isLoading() ? 'Cadastrando...' : 'Criar conta' }}
+  </button>
 
-    <input
-      aportusInput
-      type="email"
-      placeholder="E-mail"
-      [ngModel]="email()"
-      (ngModelChange)="email.set($event)"
-      autocomplete="email" />
-
-    <input
-      aportusInput
-      type="password"
-      placeholder="Senha"
-      [ngModel]="password()"
-      (ngModelChange)="password.set($event)"
-      autocomplete="new-password" />
-
-    <input
-      aportusInput
-      type="password"
-      placeholder="Confirmar senha"
-      [ngModel]="confirmPassword()"
-      (ngModelChange)="confirmPassword.set($event)"
-      autocomplete="new-password" />
-
-    <button
-      class="register-button"
-      [class.loading]="isLoading()"
-      [disabled]="isLoading()"
-      (click)="handleRegister()">
-      {{ isLoading() ? 'Cadastrando...' : 'Criar conta' }}
-    </button>
-
-    <p class="link" (click)="navigateToLogin()">
-      Já tem uma conta? <span>Entrar</span>
-    </p>
-
-  </div>
-</div>
+  <p class="link" (click)="navigateToLogin()">
+    Já tem uma conta? <span>Entrar</span>
+  </p>
+</aportus-auth-layout>

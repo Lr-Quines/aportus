@@ -1,0 +1,56 @@
+<div class="login-container">
+  <div class="theme-toggle">
+    <aportus-theme-toggle />
+  </div>
+
+  <div class="login-card">
+
+    <main class="login-form-side">
+      <div class="logo-container">
+        <img src="aportus-logo.png" alt="Aportus" class="logo" />
+      </div>
+
+      <p class="subtitle">{{ subtitle() }}</p>
+
+      <div class="form-content">
+        <ng-content />
+      </div>
+    </main>
+
+    <div class="vertical-row"></div>
+
+    <section class="login-carousel-side" aria-label="Destaques do Aportus">
+      <swiper-container
+        pagination="true"
+        pagination-clickable="true"
+        autoplay-delay="3000"
+        autoplay-disable-on-interaction="false"
+        loop="true">
+
+        <swiper-slide>
+          <div class="slide-content">
+            <h2>Controle Total</h2>
+            <p>Gerencie sua carteira de investimentos em um único lugar de forma simples.</p>
+          </div>
+        </swiper-slide>
+
+        <swiper-slide>
+          <div class="slide-content">
+            <h2>Evolução Patrimonial</h2>
+            <p>Acompanhe gráficos detalhados sobre a rentabilidade dos seus ativos.</p>
+          </div>
+        </swiper-slide>
+
+        <swiper-slide>
+          <div class="slide-content">
+            <h2>Segurança Avançada</h2>
+            <p>Seus dados financeiros protegidos com as melhores práticas de mercado.</p>
+          </div>
+        </swiper-slide>
+
+      </swiper-container>
+    </section>
+
+  </div>
+
+</div>

@@ -1,0 +1,12 @@
+<div class="layout">
+  <aportus-header
+    (toggleSidebar)="toggleSidebar()" />
+
+  <div class="layout-body">
+    <aportus-sidebar [(isSidebarExpanded)]="isSidebarExpanded" (close)="toggleSidebar()" />
+
+    <main class="content">
+      <router-outlet />
+    </main>
+  </div>
+</div>

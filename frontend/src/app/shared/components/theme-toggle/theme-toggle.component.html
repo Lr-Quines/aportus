@@ -1,0 +1,12 @@
+<button
+  class="theme-toggle"
+  (click)="themeService.toggleTheme()"
+  [aportusTooltip]="themeService.isDark() ? 'Mudar para tema claro' : 'Mudar para tema escuro'"
+  placement="left">
+  @if (themeService.isDark()) {
+    <svg lucideSun></svg>
+  }
+  @else {
+    <svg lucideMoon></svg>
+  }
+</button>

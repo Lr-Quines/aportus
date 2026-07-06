@@ -1,0 +1,102 @@
+/* --- ESTILOS GERAIS DO BALÃO --- */
+.aportus-tooltip-balloon {
+  position: absolute;
+
+  /* CONTROLE DE TAMANHO DINÂMICO */
+  width: max-content;
+  min-width: 80px;
+  max-width: 200px;
+
+  padding: 8px 12px;
+  background-color: var(--color-opposite);
+  color: var(--color-card);
+  font-size: 12px;
+  line-height: 1.4;
+  text-align: center;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  pointer-events: none;
+  animation: fadeInTooltip 0.15s ease-in-out;
+
+  /* Garante o comportamento correto de quebra apenas quando estourar os 200px */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.aportus-tooltip-balloon::after {
+  content: "";
+  position: absolute;
+  border-width: 5px;
+  border-style: solid;
+}
+
+/* --- COORDENADAS E SETAS POR POSIÇÃO --- */
+
+/* TOP (Cima) */
+.aportus-tooltip-top {
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.aportus-tooltip-top::after {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-color: var(--color-opposite) transparent transparent transparent;
+}
+
+/* BOTTOM (Baixo) */
+.aportus-tooltip-bottom {
+  top: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.aportus-tooltip-bottom::after {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-color: transparent transparent var(--color-opposite) transparent;
+}
+
+/* LEFT (Esquerda) */
+.aportus-tooltip-left {
+  top: 50%;
+  right: 115%;
+  transform: translateY(-50%);
+}
+
+.aportus-tooltip-left::after {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-color: transparent transparent transparent var(--color-opposite);
+}
+
+/* RIGHT (Direita) */
+.aportus-tooltip-right {
+  top: 50%;
+  left: 115%;
+  transform: translateY(-50%);
+}
+
+.aportus-tooltip-right::after {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-color: transparent var(--color-opposite) transparent transparent;
+}
+
+/* --- ANIMAÇÃO DE FADE-IN --- */
+@keyframes fadeInTooltip {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

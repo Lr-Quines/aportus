@@ -1,13 +1,18 @@
 import { computed, Service, signal } from "@angular/core";
+import { STORAGE_KEYS } from "../../../core/consts/storage-keys.const";
 import { MOCK_USERS } from "../mocks/user.mock";
 import { AuthResult, LoginCredentials, MockUser, RegisterCredentials } from "../models/auth.model";
 import { User } from "../models/user.model";
 
 @Service()
 export class AuthService {
-  private readonly currentUser = signal<User | null>(null);
-  public readonly isAuthenticated = computed(() => this.currentUser() !== null);
 
+  // #region Signals
+  private readonly currentUser = signal<User | null>(this.getUserFromStorage());
+  public readonly isAuthenticated = computed<boolean>(() => this.currentUser() !== null);
+  // #endregion Signals
+
+  // #region Methods
   public async login(loginCredentials: LoginCredentials): Promise<AuthResult> {
     await this.simulateDelay();
 
@@ -21,6 +26,7 @@ export class AuthService {
 
     const { password: _, ...userWithoutPassword } = found;
 
+    localStorage.setItem(STORAGE_KEYS.LOCAL_USER, JSON.stringify(userWithoutPassword));
     this.currentUser.set(userWithoutPassword);
 
     return { success: true, data: userWithoutPassword };
@@ -40,7 +46,6 @@ export class AuthService {
     const newUser: MockUser = {
       id: String(MOCK_USERS.length + 1),
       name: registerCredentials.name,
-      username: registerCredentials.username,
       email: registerCredentials.email,
       password: registerCredentials.password
     };
@@ -51,10 +56,28 @@ export class AuthService {
   }
 
   private logout(): void {
+    localStorage.removeItem(STORAGE_KEYS.LOCAL_USER);
     this.currentUser.set(null);
+  }
+
+  private getUserFromStorage(): User | null {
+    const storedUser: string | null = localStorage.getItem(STORAGE_KEYS.LOCAL_USER);
+
+    if (!storedUser) {
+      return null;
+    }
+
+    try {
+      return JSON.parse(storedUser) as User;
+    }
+    catch {
+      return null;
+    }
   }
 
   private simulateDelay(): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, 500));
   }
+  // #endregion Methods
+
 }
