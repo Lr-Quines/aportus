@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'tailwindcss';
+@import './app/shared/directives/input/input.directive.css';
+
+:root {
+  color-scheme: light;
+  --color-primary: #00C896;
+  --color-primary-dark: #00A87E;
+  --color-background: #F4F6F9;
+  --color-card: #FFFFFF;
+  --color-text: #1A1A2E;
+  --color-text-secondary: #6B7280;
+  --color-border: #E5E7EB;
+  --color-negative: #EF4444;
+  --color-warning: #F59E0B;
+  --color-dark: #0F172A;
+}
+
+html.dark {
+  color-scheme: dark;
+  --color-primary: #00D6A0;
+  --color-primary-dark: #00B889;
+  --color-background: #0F172A;
+  --color-card: #1E293B;
+  --color-text: #F8FAFC;
+  --color-text-secondary: #94A3B8;
+  --color-border: #334155;
+  --color-negative: #F87171;
+  --color-warning: #FBBF24;
+}
