@@ -5,7 +5,9 @@
       <a
         class="sidebar-item"
         [routerLink]="item.route"
-        routerLinkActive="active">
+        routerLinkActive="active"
+        [aportusTooltip]="item.label"
+        placement="right">
         <ng-container *ngComponentOutlet="item.icon" />
       </a>
     }

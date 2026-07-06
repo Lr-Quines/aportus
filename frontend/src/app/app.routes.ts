@@ -6,22 +6,17 @@ import { MainLayoutComponent } from './layout/main-layout/main-layout.component'
 
 export const routes: Routes = [
   {
-    path: '',
-    redirectTo: APP_ROUTES.accountLogin,
-    pathMatch: 'full'
-  },
-  {
     path: APP_ROUTES.account,
     canActivate: [publicGuard],
     loadChildren: () =>
-      import('./features/auth/routes/auth.routes').then(r => r.authRoutes),
+      import('./core/routes/auth.routes').then(r => r.authRoutes),
   },
   {
-    path: APP_ROUTES.dashboard,
+    path: '',
     canActivate: [authGuard],
     component: MainLayoutComponent,
     loadChildren: () =>
-      import('./features/portfolio/routes/portfolio.routes').then(r => r.portfolioRoutes),
+      import('./core/routes/application.routes').then(r => r.applicationRoutes),
   },
   {
     path: '**',

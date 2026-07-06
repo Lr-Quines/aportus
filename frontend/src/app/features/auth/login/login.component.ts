@@ -55,7 +55,7 @@ export class LoginComponent {
       return;
     }
 
-    this.router.navigate([NAV_ROUTES.dashboard]);
+    this.router.navigate([NAV_ROUTES.homePage]);
   }
 
   protected navigateToRegister(): void {

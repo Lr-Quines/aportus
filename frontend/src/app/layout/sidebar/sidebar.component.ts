@@ -3,6 +3,7 @@ import { Component, model, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LucideX } from '@lucide/angular';
 import { OffcanvasComponent } from '../../shared/components/offcanvas/offcanvas.component';
+import { TooltipDirective } from '../../shared/directives/tooltip/tooltip.directive';
 import { SIDEBAR_ITEMS } from './consts/sidebar-items.const';
 
 @Component({
@@ -11,7 +12,8 @@ import { SIDEBAR_ITEMS } from './consts/sidebar-items.const';
     NgComponentOutlet,
     RouterLink,
     LucideX,
-    OffcanvasComponent
+    OffcanvasComponent,
+    TooltipDirective
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css',

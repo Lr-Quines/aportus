@@ -1,11 +1,11 @@
-import { LucideArrowLeftRight, LucideLayoutDashboard, LucideTrendingUp, LucideWallet } from "@lucide/angular";
+import { LucideBuilding2, LucideCalculator, LucideChartNoAxesCombined, LucideHouse, LucideWallet } from "@lucide/angular";
 import { SidebarItem } from "../models/sidebar-item.model";
 
 export const SIDEBAR_ITEMS: SidebarItem[] = [
   {
-    label: 'Visão Geral',
-    route: '/dashboard',
-    icon: LucideLayoutDashboard
+    label: 'Página inicial',
+    route: '/home-page',
+    icon: LucideHouse
   },
   {
     label: 'Carteiras',
@@ -13,13 +13,18 @@ export const SIDEBAR_ITEMS: SidebarItem[] = [
     icon: LucideWallet
   },
   {
-    label: 'Lançamentos',
-    route: '/transactions',
-    icon: LucideArrowLeftRight
+    label: 'Ações',
+    route: '/acoes',
+    icon: LucideChartNoAxesCombined
   },
   {
-    label: 'Relatórios',
-    route: '/reports',
-    icon: LucideTrendingUp
+    label: 'FIIs',
+    route: '/fiis',
+    icon: LucideBuilding2
   },
-];
+  {
+    label: 'Calculadora de juros',
+    route: '/interest-calculator',
+    icon: LucideCalculator
+  },
+] as const;

@@ -4,11 +4,13 @@ export const APP_ROUTES = {
   accountLogin: 'account/login',
   register: 'register',
   accountRegister: 'account/register',
-  dashboard: 'dashboard'
+  homePage: 'home-page',
+  portfolios: 'portfolios'
 } as const;
 
 export const NAV_ROUTES = {
   login: `/${APP_ROUTES.account}/${APP_ROUTES.login}`,
   register: `/${APP_ROUTES.account}/${APP_ROUTES.register}`,
-  dashboard: `/${APP_ROUTES.dashboard}`
+  homePage: `/${APP_ROUTES.homePage}`,
+  portfolios: `/${APP_ROUTES.portfolios}`
 } as const;

@@ -16,7 +16,7 @@
   border-radius: 8px;
   border: 1px solid var(--color-border);
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
-  z-index: 100;
+  z-index: 9999;
   pointer-events: none;
   animation: fadeInTooltip 0.15s ease-in-out;
 

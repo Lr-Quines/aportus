@@ -1,4 +1,6 @@
-import { computed, Service, signal } from "@angular/core";
+import { computed, inject, Service, signal } from "@angular/core";
+import { Router } from "@angular/router";
+import { NAV_ROUTES } from "../../../core/consts/routes.const";
 import { STORAGE_KEYS } from "../../../core/consts/storage-keys.const";
 import { MOCK_USERS } from "../mocks/user.mock";
 import { AuthResult, LoginCredentials, MockUser, RegisterCredentials } from "../models/auth.model";
@@ -6,6 +8,10 @@ import { User } from "../models/user.model";
 
 @Service()
 export class AuthService {
+
+  // #region Injects
+  private readonly router = inject(Router);
+  // #endregion Injects
 
   // #region Signals
   private readonly currentUser = signal<User | null>(this.getUserFromStorage());
@@ -55,9 +61,10 @@ export class AuthService {
     return { success: true };
   }
 
-  private logout(): void {
+  public logout(): void {
     localStorage.removeItem(STORAGE_KEYS.LOCAL_USER);
     this.currentUser.set(null);
+    this.router.navigate([NAV_ROUTES.login]);
   }
 
   private getUserFromStorage(): User | null {

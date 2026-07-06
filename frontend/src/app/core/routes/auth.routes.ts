@@ -1,16 +1,16 @@
 import { Routes } from '@angular/router';
-import { APP_ROUTES } from '../../../core/consts/routes.const';
+import { APP_ROUTES } from '../consts/routes.const';
 
 export const authRoutes: Routes = [
   {
     path: APP_ROUTES.login,
     loadComponent: () =>
-      import('../login/login.component').then(c => c.LoginComponent),
+      import('../../features/auth/login/login.component').then(c => c.LoginComponent),
   },
   {
     path: APP_ROUTES.register,
     loadComponent: () =>
-      import('../register/register.component').then(c => c.RegisterComponent),
+      import('../../features/auth/register/register.component').then(c => c.RegisterComponent),
   },
   {
     path: '',

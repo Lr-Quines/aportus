@@ -68,7 +68,7 @@ export class RegisterComponent {
     const authResult: AuthResult = await this.authService.login(credentials);
 
     authResult.success
-      ? this.router.navigate([NAV_ROUTES.dashboard])
+      ? this.router.navigate([NAV_ROUTES.homePage])
       : this.router.navigate([NAV_ROUTES.login]);
   }
 
