@@ -1,0 +1,10 @@
+<nav class="nav-line" aria-label="Navegação secundária">
+  @for (item of items(); track item.route) {
+    <a
+      class="nav-line-item"
+      [routerLink]="item.route"
+      routerLinkActive="active">
+      <span [attr.data-text]="item.label"> {{ item.label }} </span>
+    </a>
+  }
+</nav>

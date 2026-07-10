@@ -1,16 +1,24 @@
 export const APP_ROUTES = {
-  account: 'account',
-  login: 'login',
-  accountLogin: 'account/login',
-  register: 'register',
-  accountRegister: 'account/register',
-  homePage: 'home-page',
-  portfolios: 'portfolios'
+  ACCOUNT: 'account',
+  LOGIN: 'login',
+  ACCOUNT_LOGIN: 'account/login',
+  REGISTER: 'register',
+  ACCOUNT_REGISTER: 'account/register',
+  HOME_PAGE: 'home-page',
+  PORTFOLIOS: 'portfolios',
+  CALCULATORS: 'calculators',
+  COMPOUND_INTEREST: 'compound-interest',
+  FIRST_MILLION: 'first-million',
+  EMERGENCY_FUND: 'emergency-fund'
 } as const;
 
 export const NAV_ROUTES = {
-  login: `/${APP_ROUTES.account}/${APP_ROUTES.login}`,
-  register: `/${APP_ROUTES.account}/${APP_ROUTES.register}`,
-  homePage: `/${APP_ROUTES.homePage}`,
-  portfolios: `/${APP_ROUTES.portfolios}`
+  LOGIN: `/${APP_ROUTES.ACCOUNT}/${APP_ROUTES.LOGIN}`,
+  REGISTER: `/${APP_ROUTES.ACCOUNT}/${APP_ROUTES.REGISTER}`,
+  HOME_PAGE: `/${APP_ROUTES.HOME_PAGE}`,
+  PORTFOLIOS: `/${APP_ROUTES.PORTFOLIOS}`,
+  CALCULATORS: `/${APP_ROUTES.CALCULATORS}`,
+  COMPOUND_INTEREST: `/${APP_ROUTES.CALCULATORS}/${APP_ROUTES.COMPOUND_INTEREST}`,
+  FIRST_MILLION: `/${APP_ROUTES.CALCULATORS}/${APP_ROUTES.FIRST_MILLION}`,
+  EMERGENCY_FUND: `/${APP_ROUTES.CALCULATORS}/${APP_ROUTES.EMERGENCY_FUND}`
 } as const;

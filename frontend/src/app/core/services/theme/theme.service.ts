@@ -6,21 +6,22 @@ import { ApplicationTheme } from '../../enums/application-theme.enum';
 export class ThemeService {
 
   // #region Signals
-  private readonly currentTheme = signal<ApplicationTheme>(ApplicationTheme.Light);
-  public readonly isDark = computed<boolean>(() => this.currentTheme() === ApplicationTheme.Dark);
+  private readonly _currentTheme = signal<ApplicationTheme>(ApplicationTheme.Light);
+  public readonly currentTheme = this._currentTheme.asReadonly();
+  public readonly isDark = computed<boolean>(() => this._currentTheme() === ApplicationTheme.Dark);
   // #endregion Signals
 
   // #region Methods
   private setDarkTheme(): void {
     document.documentElement.classList.add('dark');
     localStorage.setItem(STORAGE_KEYS.THEME_PREFERENCE, 'dark');
-    this.currentTheme.set(ApplicationTheme.Dark);
+    this._currentTheme.set(ApplicationTheme.Dark);
   }
 
   private setLightTheme(): void {
     document.documentElement.classList.remove('dark');
     localStorage.setItem(STORAGE_KEYS.THEME_PREFERENCE, 'light');
-    this.currentTheme.set(ApplicationTheme.Light);
+    this._currentTheme.set(ApplicationTheme.Light);
   }
 
   public toggleTheme(): void {

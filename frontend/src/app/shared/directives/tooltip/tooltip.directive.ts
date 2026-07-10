@@ -1,5 +1,5 @@
 import { Directive, effect, ElementRef, HostListener, inject, input, Renderer2 } from '@angular/core';
-import { TooltipPlacement } from './tooltip-placement.const';
+import { TooltipPlacement } from './tooltip-placement.type';
 
 @Directive({
   selector: '[aportusTooltip]'
@@ -30,7 +30,7 @@ export class TooltipDirective {
       if (this.tooltipElement && this.textNode) {
         this.renderer2.setValue(this.textNode, newText);
       }
-    })
+    });
   }
   // #endregion Lifecycle
 

@@ -1,0 +1,35 @@
+<button
+  [type]="type()"
+  [class]="classes()"
+  [disabled]="disabled() || isLoading()"
+  (click)="handleClick()">
+
+  @if (isLoading()) {
+    <span class="btn-spinner"></span>
+  }
+  @else {
+
+    @if (icon() && iconPosition() === 'left') {
+      <span class="btn-icon">
+        <ng-container *ngComponentOutlet="icon()!" />
+      </span>
+    }
+
+    @if (iconPosition() !== 'only') {
+      <span class="btn-label">{{ label() }}</span>
+    }
+
+    @if (icon() && iconPosition() === 'right') {
+      <span class="btn-icon">
+        <ng-container *ngComponentOutlet="icon()!" />
+      </span>
+    }
+
+    @if (icon() && iconPosition() === 'only') {
+      <span class="btn-icon">
+        <ng-container *ngComponentOutlet="icon()!" />
+      </span>
+    }
+
+  }
+</button>

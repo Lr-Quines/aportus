@@ -1,45 +1,45 @@
-<aportus-auth-layout subtitle="Crie sua conta e comece a investir melhor">
-  <input
-    aportusInput
-    type="text"
-    placeholder="Nome completo"
-    [ngModel]="name()"
-    (ngModelChange)="name.set($event)"
-    autocomplete="name" />
+<p class="subtitle">Crie sua conta e comece a investir melhor</p>
 
-  <input
-    aportusInput
-    type="email"
-    placeholder="E-mail"
-    [ngModel]="email()"
-    (ngModelChange)="email.set($event)"
-    autocomplete="email" />
+<input
+  aportusInput
+  type="text"
+  placeholder="Nome completo"
+  [ngModel]="name()"
+  (ngModelChange)="name.set($event)"
+  autocomplete="name" />
 
-  <input
-    aportusInput
-    type="password"
-    placeholder="Senha"
-    [ngModel]="password()"
-    (ngModelChange)="password.set($event)"
-    autocomplete="new-password" />
+<input
+  aportusInput
+  type="email"
+  placeholder="E-mail"
+  [ngModel]="email()"
+  (ngModelChange)="email.set($event)"
+  autocomplete="email" />
 
-  <input
-    aportusInput
-    type="password"
-    placeholder="Confirmar senha"
-    [ngModel]="confirmPassword()"
-    (ngModelChange)="confirmPassword.set($event)"
-    autocomplete="new-password" />
+<input
+  aportusInput
+  type="password"
+  placeholder="Senha"
+  [ngModel]="password()"
+  (ngModelChange)="password.set($event)"
+  autocomplete="new-password" />
 
-  <button
-    class="register-button"
-    [class.loading]="isLoading()"
-    [disabled]="isLoading()"
-    (click)="handleRegister()">
-    {{ isLoading() ? 'Cadastrando...' : 'Criar conta' }}
-  </button>
+<input
+  aportusInput
+  type="password"
+  placeholder="Confirmar senha"
+  [ngModel]="confirmPassword()"
+  (ngModelChange)="confirmPassword.set($event)"
+  autocomplete="new-password" />
 
-  <p class="link" (click)="navigateToLogin()">
-    Já tem uma conta? <span>Entrar</span>
-  </p>
-</aportus-auth-layout>
+<button
+  class="register-button"
+  [class.loading]="isLoading()"
+  [disabled]="isLoading()"
+  (click)="handleRegister()">
+  {{ isLoading() ? 'Cadastrando...' : 'Criar conta' }}
+</button>
+
+<p class="link" (click)="navigateToLogin()">
+  Já tem uma conta? <span>Entrar</span>
+</p>

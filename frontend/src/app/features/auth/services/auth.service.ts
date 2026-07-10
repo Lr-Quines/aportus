@@ -64,7 +64,7 @@ export class AuthService {
   public logout(): void {
     localStorage.removeItem(STORAGE_KEYS.LOCAL_USER);
     this.currentUser.set(null);
-    this.router.navigate([NAV_ROUTES.login]);
+    this.router.navigate([NAV_ROUTES.LOGIN]);
   }
 
   private getUserFromStorage(): User | null {

@@ -3,7 +3,6 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { NAV_ROUTES } from '../../../core/consts/routes.const';
-import { AuthLayoutComponent } from '../../../layout/auth-layout/auth-layout.component';
 import { InputDirective } from '../../../shared/directives/input/input.directive';
 import { AuthResult, LoginCredentials } from '../models/auth.model';
 import { AuthService } from '../services/auth.service';
@@ -11,7 +10,6 @@ import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'aportus-login',
   imports: [
-    AuthLayoutComponent,
     FormsModule,
     InputDirective
   ],
@@ -55,11 +53,11 @@ export class LoginComponent {
       return;
     }
 
-    this.router.navigate([NAV_ROUTES.homePage]);
+    this.router.navigate([NAV_ROUTES.HOME_PAGE]);
   }
 
   protected navigateToRegister(): void {
-    this.router.navigate([NAV_ROUTES.register]);
+    this.router.navigate([NAV_ROUTES.REGISTER]);
   }
   // #endregion Methods
 

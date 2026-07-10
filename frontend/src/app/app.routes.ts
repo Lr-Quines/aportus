@@ -6,7 +6,7 @@ import { MainLayoutComponent } from './layout/main-layout/main-layout.component'
 
 export const routes: Routes = [
   {
-    path: APP_ROUTES.account,
+    path: APP_ROUTES.ACCOUNT,
     canActivate: [publicGuard],
     loadChildren: () =>
       import('./core/routes/auth.routes').then(r => r.authRoutes),
@@ -20,6 +20,6 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: APP_ROUTES.accountLogin,
+    redirectTo: APP_ROUTES.ACCOUNT_LOGIN
   }
 ];

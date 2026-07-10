@@ -1,8 +1,4 @@
 <div class="login-container">
-  <div class="theme-toggle">
-    <aportus-theme-toggle />
-  </div>
-
   <div class="login-card">
 
     <main class="login-form-side">
@@ -10,22 +6,15 @@
         <img src="aportus-logo.png" alt="Aportus" class="logo" />
       </div>
 
-      <p class="subtitle">{{ subtitle() }}</p>
-
       <div class="form-content">
-        <ng-content />
+        <router-outlet />
       </div>
     </main>
 
     <div class="vertical-row"></div>
 
     <section class="login-carousel-side" aria-label="Destaques do Aportus">
-      <swiper-container
-        pagination="true"
-        pagination-clickable="true"
-        autoplay-delay="3000"
-        autoplay-disable-on-interaction="false"
-        loop="true">
+      <swiper-container #swiperElement init="false">
 
         <swiper-slide>
           <div class="slide-content">

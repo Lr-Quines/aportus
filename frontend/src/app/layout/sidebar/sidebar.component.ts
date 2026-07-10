@@ -1,6 +1,6 @@
 import { NgComponentOutlet } from '@angular/common';
 import { Component, model, output } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { LucideX } from '@lucide/angular';
 import { OffcanvasComponent } from '../../shared/components/offcanvas/offcanvas.component';
 import { TooltipDirective } from '../../shared/directives/tooltip/tooltip.directive';
@@ -11,6 +11,7 @@ import { SIDEBAR_ITEMS } from './consts/sidebar-items.const';
   imports: [
     NgComponentOutlet,
     RouterLink,
+    RouterLinkActive,
     LucideX,
     OffcanvasComponent,
     TooltipDirective

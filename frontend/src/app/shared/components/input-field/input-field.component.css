@@ -1,0 +1,77 @@
+.input-field-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.input-field-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background-color: var(--color-card);
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.input-field-container:focus-within {
+  border-color: var(--color-primary);
+}
+
+.input-field-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  color: var(--color-text-secondary);
+}
+
+.input-field-divider {
+  width: 1px;
+  height: 47px;
+  background-color: var(--color-border);
+}
+
+.input-field-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.input-field-description {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.input-field-content {
+  display: flex;
+  flex-direction: column;
+  padding: 4.5px 12px;
+  flex: 1;
+  gap: 2px;
+  cursor: text;
+}
+
+.input-field-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.input-field-prefix {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+:host ::ng-deep .input-field-row input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--color-text);
+  font-size: 16px;
+  font-weight: 500;
+  width: 100%;
+}

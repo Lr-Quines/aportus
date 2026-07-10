@@ -1,0 +1,26 @@
+<div class="input-field-wrapper">
+  <div class="input-field-container">
+    <div class="input-field-icon">
+      <ng-container *ngComponentOutlet="icon()" />
+    </div>
+
+    <div class="input-field-divider"></div>
+
+    <label class="input-field-content">
+      <span class="input-field-label">{{ label() }}</span>
+      <div class="input-field-row">
+
+        @if (prefix()) {
+          <span class="input-field-prefix">{{ prefix() }}</span>
+        }
+
+        <ng-content />
+
+      </div>
+    </label>
+  </div>
+
+  @if (description()) {
+    <span class="input-field-description">{{ description() }}</span>
+  }
+</div>

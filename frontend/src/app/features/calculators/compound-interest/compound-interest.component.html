@@ -1,0 +1,55 @@
+<div class="flex gap-6">
+  <div class="w-1/2">
+    <aportus-input-field
+      [icon]="lucideDollarSign"
+      label="Patrimônio inicial"
+      description="Insira o seu patrimônio inicial.">
+      <input aportusCurrencyInput>
+    </aportus-input-field>
+  </div>
+  <div class="w-1/2">
+    <div class="flex gap-6">
+      <div class="w-1/2">
+        <aportus-input-field
+          [icon]="lucideDollarSign"
+          label="Aportes mensais"
+          description="Valor investido todo mês.">
+          <input aportusCurrencyInput>
+        </aportus-input-field>
+      </div>
+      <div class="w-1/2">
+        <aportus-input-field
+          [icon]="lucidePercent"
+          label="Aumento dos aportes (anual)"
+          description="Aumento anual no aporte.">
+          <input aportusPercentInput>
+        </aportus-input-field>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="flex gap-6 mt-6">
+  <div class="w-1/2">
+    <aportus-input-field
+      [icon]="lucideCalendarDays"
+      label="Período"
+      description="Período que deseja calcular.">
+      <input>
+    </aportus-input-field>
+  </div>
+  <div class="w-1/2">
+    <aportus-input-field
+      [icon]="lucidePercent"
+      label="Rendimento"
+      description="Que dá x% ao ano.">
+      <input aportusPercentInput>
+    </aportus-input-field>
+  </div>
+</div>
+
+<div class="mt-6">
+  <aportus-button
+    label="Calcular"
+    [icon]="lucideCalculator" />
+</div>
