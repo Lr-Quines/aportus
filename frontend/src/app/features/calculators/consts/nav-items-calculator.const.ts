@@ -1,5 +1,5 @@
 import { NAV_ROUTES } from "../../../core/consts/routes.const";
-import { NavLineItem } from "../../../shared/components/nav-line/models/nav-line-item.model";
+import { NavLineItem } from "../../../shared/components/nav-line/interfaces/nav-line-item.interface";
 
 export const navItemsCalculator: NavLineItem[] = [
   { label: 'Juros compostos', route: NAV_ROUTES.COMPOUND_INTEREST },

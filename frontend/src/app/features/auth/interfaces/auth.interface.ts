@@ -1,5 +1,5 @@
-import { Result } from '../../../shared/models/result.model';
-import { User } from './user.model';
+import { Result } from '../../../shared/interfaces/result.interface';
+import { User } from './user.interface';
 
 export interface AuthResult extends Result<User> { }
 

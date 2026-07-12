@@ -1,0 +1,77 @@
+<div class="w-full overflow-x-auto rounded-lg border border-[var(--color-border)] bg-[var(--color-card)]">
+  <table class="w-full border-collapse text-sm text-[var(--color-text)]">
+    <thead class="bg-[var(--color-background)]">
+      <tr>
+        @for (column of columns(); track column.key) {
+          <th
+            [style.width]="column.width"
+            [ngClass]="[
+              'px-4 py-3 whitespace-nowrap select-none text-xs font-semibold uppercase tracking-wide text-[var(--color-text-secondary)]',
+              column.align === 'center' ? 'text-center' : column.align === 'right' ? 'text-right' : 'text-left',
+              column.sortable ? 'cursor-pointer transition-colors hover:text-[var(--color-text)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] focus-visible:ring-inset' : ''
+            ]"
+            [attr.tabindex]="column.sortable ? 0 : null"
+            [attr.aria-sort]="sortIndicator(column) === 'asc' ? 'ascending' : sortIndicator(column) === 'desc' ? 'descending' : column.sortable ? 'none' : null"
+            (click)="onHeaderClick(column)"
+            (keydown.enter)="onHeaderClick(column)"
+            (keydown.space)="onHeaderClick(column)">
+            <span class="inline-flex items-center gap-1.5">
+              {{ column.label }}
+              @if (column.sortable) {
+                <span
+                  class="text-[10px] transition-opacity"
+                  [class]="sortIndicator(column) !== 'none' ? 'text-[var(--color-primary)] opacity-100' : 'opacity-40'">
+                  @switch (sortIndicator(column)) {
+                    @case ('asc') { ▲ }
+                    @case ('desc') { ▼ }
+                    @default { ⇅ }
+                  }
+                </span>
+              }
+            </span>
+          </th>
+        }
+      </tr>
+    </thead>
+
+    <tbody>
+      @if (isEmpty()) {
+        <tr>
+          <td
+            [attr.colspan]="columns().length"
+            class="px-4 py-8 text-center text-[var(--color-text-secondary)]">
+            {{ emptyMessage() }}
+          </td>
+        </tr>
+      }
+      @else {
+        @for (row of sortedData(); track trackBy()(row, $index); let last = $last) {
+          <tr
+            [ngClass]="[
+              'transition-colors odd:bg-[var(--color-card)] even:bg-[var(--color-row-alt)] hover:bg-[var(--color-background)]',
+              !last ? 'border-b border-[var(--color-border)]' : ''
+            ]">
+            @for (column of columns(); track column.key) {
+              <td
+                [ngClass]="[
+                  'px-4 py-3',
+                  column.align === 'center' ? 'text-center' : column.align === 'right' ? 'text-right' : 'text-left'
+                ]">
+                @let customTemplate = getCellTemplate(column.key);
+                @if (customTemplate) {
+                  <ng-container
+                    [ngTemplateOutlet]="customTemplate"
+                    [ngTemplateOutletContext]="{ $implicit: row, row: row, columnKey: column.key }">
+                  </ng-container>
+                }
+                @else {
+                  {{ formatCellValue(column, row) }}
+                }
+              </td>
+            }
+          </tr>
+        }
+      }
+    </tbody>
+  </table>
+</div>

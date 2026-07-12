@@ -1,6 +1,6 @@
 import { NgComponentOutlet } from '@angular/common';
 import { Component, computed, input, output, Type } from '@angular/core';
-import { ButtonIconPosition, ButtonSize, ButtonVariant } from '../../models/button.model';
+import { ButtonIconPosition, ButtonSize, ButtonVariant } from '../../types/button.type';
 
 @Component({
   selector: 'aportus-button',

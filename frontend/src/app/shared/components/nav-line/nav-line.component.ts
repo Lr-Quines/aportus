@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { NavLineItem } from './models/nav-line-item.model';
+import { NavLineItem } from './interfaces/nav-line-item.interface';
 
 @Component({
   selector: 'aportus-nav-line',

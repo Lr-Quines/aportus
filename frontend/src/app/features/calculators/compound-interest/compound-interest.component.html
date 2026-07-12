@@ -1,55 +1,91 @@
-<div class="flex gap-6">
-  <div class="w-1/2">
-    <aportus-input-field
-      [icon]="lucideDollarSign"
-      label="Patrimônio inicial"
-      description="Insira o seu patrimônio inicial.">
-      <input aportusCurrencyInput>
-    </aportus-input-field>
-  </div>
-  <div class="w-1/2">
-    <div class="flex gap-6">
+<form>
+  <div class="flex gap-6">
+
+    <!-- #region PATRIMÔNIO INICIAL -->
+    <div class="w-1/2">
+      <aportus-input-field
+        [icon]="lucideDollarSign"
+        label="Patrimônio inicial"
+        description="Insira o seu patrimônio inicial.">
+        <input
+          aportusCurrencyInput
+          [formField]="formService.form.initialAssets">
+      </aportus-input-field>
+    </div>
+    <!-- #region PATRIMÔNIO INICIAL -->
+
+    <div class="w-1/2 flex gap-6">
+
+      <!-- #region APORTES MENSAIS -->
       <div class="w-1/2">
         <aportus-input-field
           [icon]="lucideDollarSign"
           label="Aportes mensais"
           description="Valor investido todo mês.">
-          <input aportusCurrencyInput>
+          <input
+            aportusCurrencyInput
+            [formField]="formService.form.monthlyContributions">
         </aportus-input-field>
       </div>
+      <!-- #endregion APORTES MENSAIS -->
+
+      <!-- #region AUMENTO DOS APORTES -->
       <div class="w-1/2">
         <aportus-input-field
           [icon]="lucidePercent"
           label="Aumento dos aportes (anual)"
           description="Aumento anual no aporte.">
-          <input aportusPercentInput>
+          <input
+            aportusPercentInput
+            [formField]="formService.form.increaseContributions">
         </aportus-input-field>
       </div>
+      <!-- #endregion AUMENTO DOS APORTES -->
+
     </div>
   </div>
-</div>
 
-<div class="flex gap-6 mt-6">
-  <div class="w-1/2">
-    <aportus-input-field
-      [icon]="lucideCalendarDays"
-      label="Período"
-      description="Período que deseja calcular.">
-      <input>
-    </aportus-input-field>
+  <div class="flex gap-6 mt-6">
+
+    <!-- #region PERÍODO -->
+    <div class="w-1/2">
+      <aportus-input-field
+        [icon]="lucideCalendarDays"
+        label="Período"
+        description="Período que deseja calcular.">
+        <input
+          [formField]="formService.form.period">
+      </aportus-input-field>
+    </div>
+    <!-- #endregion PERÍODO -->
+
+    <!-- #region RENDIMENTO -->
+    <div class="w-1/2">
+      <aportus-input-field
+        [icon]="lucidePercent"
+        label="Rendimento"
+        description="Que dá x% ao ano.">
+        <input
+          aportusPercentInput
+          [formField]="formService.form.expectedYield">
+      </aportus-input-field>
+    </div>
+    <!-- #endregion RENDIMENTO -->
+
   </div>
-  <div class="w-1/2">
-    <aportus-input-field
-      [icon]="lucidePercent"
-      label="Rendimento"
-      description="Que dá x% ao ano.">
-      <input aportusPercentInput>
-    </aportus-input-field>
+
+  <div class="mt-6">
+    <aportus-button
+      label="Calcular"
+      [icon]="lucideCalculator"
+      (clicked)="calculateProjection()" />
   </div>
-</div>
+</form>
 
 <div class="mt-6">
-  <aportus-button
-    label="Calcular"
-    [icon]="lucideCalculator" />
+  <aportus-table
+    [columns]="columns"
+    [data]="compoundInterestProjection()"
+    emptyMessage="Preencha o formulário para ver a simulação.">
+  </aportus-table>
 </div>

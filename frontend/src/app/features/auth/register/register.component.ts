@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { NAV_ROUTES } from '../../../core/consts/routes.const';
 import { InputDirective } from '../../../shared/directives/input/input.directive';
-import { AuthResult, RegisterCredentials } from '../models/auth.model';
+import { AuthResult, RegisterCredentials } from '../interfaces/auth.interface';
 import { AuthService } from '../services/auth.service';
 
 @Component({

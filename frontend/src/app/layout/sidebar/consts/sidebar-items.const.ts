@@ -1,6 +1,6 @@
 import { LucideBuilding2, LucideCalculator, LucideChartNoAxesCombined, LucideHouse, LucideWallet } from "@lucide/angular";
 import { NAV_ROUTES } from "../../../core/consts/routes.const";
-import { SidebarItem } from "../models/sidebar-item.model";
+import { SidebarItem } from "../interfaces/sidebar-item.interface";
 
 export const SIDEBAR_ITEMS: SidebarItem[] = [
   {

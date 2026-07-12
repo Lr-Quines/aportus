@@ -17,6 +17,7 @@
   --color-warning: #F59E0B;
   --color-opposite: #0F172A;
   --color-dark: #0F172A;
+  --color-row-alt: #FAFAFB;
 }
 
 html.dark {
@@ -31,4 +32,5 @@ html.dark {
   --color-negative: #F87171;
   --color-warning: #FBBF24;
   --color-opposite: #F4F6F9;
+  --color-row-alt: #1A2537;
 }

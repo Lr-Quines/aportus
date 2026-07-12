@@ -1,4 +1,4 @@
-import { MockUser } from "../models/auth.model";
+import { MockUser } from "../interfaces/auth.interface";
 
 export const MOCK_USERS: MockUser[] = [
   {
